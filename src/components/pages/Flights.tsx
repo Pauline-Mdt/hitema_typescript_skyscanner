@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Flight, FlightSearch} from '../../interfaces/interfaces';
 import {searchFlights} from '../../services/skyscannerApi';
 import FlightCard from '../parts/FlightCard';
+import {getLocalStorageItem} from '../../helpers/localStorage';
+
+const FAVORITES_FLIGHTS_STORAGE_KEY: string = 'skyscanner_favourites_flights';
 
 const Flights = () => {
     const [search, setSearch] = useState<FlightSearch>({
@@ -22,6 +25,14 @@ const Flights = () => {
     const [flights, setFlights] = useState<Flight[]>([]);
     const [error, setError] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
+    const [favoriteFlights, setFavoriteFlights] = useState<Flight[]>([]);
+
+    useEffect(() => {
+        const favoriteFlightsStored = getLocalStorageItem(FAVORITES_FLIGHTS_STORAGE_KEY)
+        if (favoriteFlightsStored) {
+            setFavoriteFlights([...favoriteFlightsStored])
+        }
+    }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.name === 'hasReturn') {
@@ -121,11 +132,14 @@ const Flights = () => {
             </form>
             <div>
                 {
-                    error && <p>Désolé, il y a eu un problème :<br/>{ message }.<br/>Merci de modifier votre recherche ou d réessayer plus tard.</p>
+                    error && <p>Désolé, il y a eu un problème :<br/>{ message }.<br/>Merci de réessayer plus tard.</p>
                 }
                 {
                     flights.length !== 0 &&
-                    flights.map((flight) => <FlightCard key={flight.id} flight={flight}/>)
+                    flights.map((flight) => <FlightCard key={flight.id}
+                                                        flight={flight}
+                                                        favoriteFlights={favoriteFlights}
+                                                        setFavoriteFlights={setFavoriteFlights}/>)
                 }
             </div>
         </>

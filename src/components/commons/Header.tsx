@@ -14,7 +14,7 @@ const Header = () => {
         },
         {
             name: 'Favoris',
-            path: '/favourites',
+            path: '/favorite-flights',
         },
     ];
 
