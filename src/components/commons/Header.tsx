@@ -19,17 +19,21 @@ const Header = () => {
     ];
 
     return (
-        <header>
-            <div>
-                <span className="material-icons-round">flight</span>
+        <header className="skyscanner_header">
+            <div className="skyscanner_header_brand">
+                <span className="material-icons-round skyscanner_header_brand_logo">flight</span>
                 <p><Link to="/">Dreaming Voyage</Link></p>
             </div>
             <nav>
-                {pages.map((page, index) => (
-                    <NavLink to={page.path} className="nav-link" key={index}>
-                        {page.name}
-                    </NavLink>
-                ))}
+                <ul className="skyscanner_header_menu">
+                    {pages.map((page, index) => (
+                        <li key={index}>
+                            <NavLink to={page.path} className="skyscanner_header_menu_item">
+                                {page.name}
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
             </nav>
         </header>
     );

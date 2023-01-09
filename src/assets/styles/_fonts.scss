@@ -1,0 +1,96 @@
+$ace-sans-thin: 'AceSansThin';
+$ace-sans-extra-light: 'AceSansExtralight';
+$ace-sans-light: 'AceSansLight';
+$ace-sans: 'AceSans';
+$ace-sans-medium: 'AceSansMedium';
+$ace-sans-bold: 'AceSansBold';
+$ace-sans-extra-bold: 'AceSansExtrabold';
+$ace-sans-black: 'AceSansBlack';
+
+//@font-face {
+//  font-family: 'AceSansThin';
+//  src: url('../fonts/AceSans/AceSansThin/AceSansThin.eot');
+//  src: url('../fonts/AceSans/AceSansThin/AceSansThin.eot?#iefix') format('embedded-opentype'),
+//  url('../fonts/AceSans/AceSansThin/AceSansThin.otf') format('opentype'),
+//  url('../fonts/AceSans/AceSansThin/AceSansThin.woff2') format('woff2'),
+//  url('../fonts/AceSans/AceSansThin/AceSansThin.woff') format('woff'),
+//  url('../fonts/AceSans/AceSansThin/AceSansThin.ttf') format('truetype'),
+//  url('../fonts/AceSans/AceSansThin/AceSansThin.svg#AceSansThin') format('svg');
+//}
+//
+//@font-face {
+//  font-family: 'AceSansExtralight';
+//  src: url('../fonts/AceSans/AceSansExtralight/AceSansExtralight.eot');
+//  src: url('../fonts/AceSans/AceSansExtralight/AceSansExtralight.eot?#iefix') format('embedded-opentype'),
+//  url('../fonts/AceSans/AceSansExtralight/AceSansExtralight.otf') format('opentype'),
+//  url('../fonts/AceSans/AceSansExtralight/AceSansExtralight.woff2') format('woff2'),
+//  url('../fonts/AceSans/AceSansExtralight/AceSansExtralight.woff') format('woff'),
+//  url('../fonts/AceSans/AceSansExtralight/AceSansExtralight.ttf') format('truetype'),
+//  url('../fonts/AceSans/AceSansExtralight/AceSansExtralight.svg#AceSansExtralight') format('svg');
+//}
+//
+//@font-face {
+//  font-family: 'AceSansLight';
+//  src: url('../fonts/AceSans/AceSansLight/AceSansLight.eot');
+//  src: url('../fonts/AceSans/AceSansLight/AceSansLight.eot?#iefix') format('embedded-opentype'),
+//  url('../fonts/AceSans/AceSansLight/AceSansLight.otf') format('opentype'),
+//  url('../fonts/AceSans/AceSansLight/AceSansLight.woff2') format('woff2'),
+//  url('../fonts/AceSans/AceSansLight/AceSansLight.woff') format('woff'),
+//  url('../fonts/AceSans/AceSansLight/AceSansLight.ttf') format('truetype'),
+//  url('../fonts/AceSans/AceSansLight/AceSansLight.svg#AceSansLight') format('svg');
+//}
+//
+//@font-face {
+//  font-family: 'AceSans';
+//  src: url('../fonts/AceSans/AceSans/AceSans.eot');
+//  src: url('../fonts/AceSans/AceSans/AceSans.eot?#iefix') format('embedded-opentype'),
+//  url('../fonts/AceSans/AceSans/AceSans.otf') format('opentype'),
+//  url('../fonts/AceSans/AceSans/AceSans.woff2') format('woff2'),
+//  url('../fonts/AceSans/AceSans/AceSans.woff') format('woff'),
+//  url('../fonts/AceSans/AceSans/AceSans.ttf') format('truetype'),
+//  url('../fonts/AceSans/AceSans/AceSans.svg#AceSans') format('svg');
+//}
+//
+//@font-face {
+//  font-family: 'AceSansMedium';
+//  src: url('../fonts/AceSans/AceSansMedium/AceSansMedium.eot');
+//  src: url('../fonts/AceSans/AceSansMedium/AceSansMedium.eot?#iefix') format('embedded-opentype'),
+//  url('../fonts/AceSans/AceSansMedium/AceSansMedium.otf') format('opentype'),
+//  url('../fonts/AceSans/AceSansMedium/AceSansMedium.woff2') format('woff2'),
+//  url('../fonts/AceSans/AceSansMedium/AceSansMedium.woff') format('woff'),
+//  url('../fonts/AceSans/AceSansMedium/AceSansMedium.ttf') format('truetype'),
+//  url('../fonts/AceSans/AceSansMedium/AceSansMedium.svg#AceSansMedium') format('svg');
+//}
+//
+//@font-face {
+//  font-family: 'AceSansBold';
+//  src: url('../fonts/AceSans/AceSansBold/AceSansBold.eot');
+//  src: url('../fonts/AceSans/AceSansBold/AceSansBold.eot?#iefix') format('embedded-opentype'),
+//  url('../fonts/AceSans/AceSansBold/AceSansBold.otf') format('opentype'),
+//  url('../fonts/AceSans/AceSansBold/AceSansBold.woff2') format('woff2'),
+//  url('../fonts/AceSans/AceSansBold/AceSansBold.woff') format('woff'),
+//  url('../fonts/AceSans/AceSansBold/AceSansBold.ttf') format('truetype'),
+//  url('../fonts/AceSans/AceSansBold/AceSansBold.svg#AceSansBold') format('svg');
+//}
+//
+//@font-face {
+//  font-family: 'AceSansExtrabold';
+//  src: url('../fonts/AceSans/AceSansExtrabold/AceSansExtrabold.eot');
+//  src: url('../fonts/AceSans/AceSansExtrabold/AceSansExtrabold.eot?#iefix') format('embedded-opentype'),
+//  url('../fonts/AceSans/AceSansExtrabold/AceSansExtrabold.otf') format('opentype'),
+//  url('../fonts/AceSans/AceSansExtrabold/AceSansExtrabold.woff2') format('woff2'),
+//  url('../fonts/AceSans/AceSansExtrabold/AceSansExtrabold.woff') format('woff'),
+//  url('../fonts/AceSans/AceSansExtrabold/AceSansExtrabold.ttf') format('truetype'),
+//  url('../fonts/AceSans/AceSansExtrabold/AceSansExtrabold.svg#AceSansExtrabold') format('svg');
+//}
+//
+//@font-face {
+//  font-family: 'AceSansBlack';
+//  src: url('../fonts/AceSans/AceSansBlack/AceSansBlack.eot');
+//  src: url('../fonts/AceSans/AceSansBlack/AceSansBlack.eot?#iefix') format('embedded-opentype'),
+//  url('../fonts/AceSans/AceSansBlack/AceSansBlack.otf') format('opentype'),
+//  url('../fonts/AceSans/AceSansBlack/AceSansBlack.woff2') format('woff2'),
+//  url('../fonts/AceSans/AceSansBlack/AceSansBlack.woff') format('woff'),
+//  url('../fonts/AceSans/AceSansBlack/AceSansBlack.ttf') format('truetype'),
+//  url('../fonts/AceSans/AceSansBlack/AceSansBlack.svg#AceSansBlack') format('svg');
+//}

@@ -1,0 +1,36 @@
+/* COLORS */
+
+$aquamarine: #7FFFD4;
+$purple-navy: #655A7C;
+$glossy-grape: #AB92BF;
+$maximum-yellow-red: #FFBF46;
+$black: #020202;
+$silver-pink: #C4A69D;
+$black-coral: #465C69;
+$space-cadet: #363457;
+$royal-purple: #735290;
+
+// CUSTOM colors
+//$primary-light: rgb(165, 185, 156);
+//$secondary-light: rgb(209, 193, 168);
+//$background-replacement: rgb(209, 196, 182);
+//$primary-light: #A5B99C;
+//$secondary-light: #EAE3D9;
+//$background-replacement: #CEC1B2;
+//$linear-gradiant-primary: linear-gradient(135deg, $primary, $primary-light);
+//$linear-gradiant-secondary: linear-gradient(135deg, $secondary, $secondary-light);
+
+
+// Create own map
+//$colors: (
+//        'primary-light':  $primary-light,
+//        'secondary-light': $secondary-light,
+//        'background-replacement': $background-replacement,
+//        'linear-gradiant-primary': $linear-gradiant-primary,
+//        'linear-gradiant-secondary': $linear-gradiant-secondary,
+//);
+
+/* Various */
+$header-height: 50px;
+$container-max-width: calc(1240px + (2 * 15px));
+$box-shadow: 0px 3px 20px rgba(var(--navy-blue-raw), var(--opacity-18));

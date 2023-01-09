@@ -5,7 +5,7 @@ import Layout from './Layout';
 import Home from './components/pages/Home';
 import Airports from './components/pages/Airports';
 import Flights from './components/pages/Flights';
-import Favourites from './components/pages/Favourites';
+import FavoriteFlights from './components/pages/FavoriteFlights';
 import FlightDetails from './components/pages/FlightDetails';
 
 const App: React.FC = () => {
@@ -16,7 +16,7 @@ const App: React.FC = () => {
                 <Route path="airports" element={<Airports />} />
                 <Route path="flights" element={<Flights />} />
                 <Route path="flights/:id" element={<FlightDetails />} />
-                <Route path="favourites" element={<Favourites />} />
+                <Route path="favorite-flights" element={<FavoriteFlights />} />
             </Route>
         </Routes>
     );

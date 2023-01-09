@@ -39,44 +39,50 @@ const FlightCard: React.FC<FlightCardProps> = ({flight, favoriteFlights, setFavo
     }
 
     return (
-        <article>
-            <header>
+        <article className="skyscanner_flight_card">
+            <header className="skyscanner_flight_card_header">
                 <h3>{flight.id}</h3>
             </header>
-            <div>
-                {
-                    flight.legs.map((leg, index) => {
-                        const departureDate: Date = new Date(leg.departure);
-                        const arrivalDate: Date = new Date(leg.arrival);
-                        return (
-                            <div key={leg.id}>
-                                <h3>{ index === 0 ? 'Aller' : 'Retour' }</h3>
-                                <p>De : { leg.origin.name }</p>
-                                <p>{ displayDateAndTime(departureDate) }</p>
-                                <p>A : { leg.destination.name }</p>
-                                <p>{ displayDateAndTime(arrivalDate) }</p>
-                            </div>
-                        )
-                    })
-                }
+            <div className="skyscanner_flight_card_body">
+                <table>
+                    {
+                        flight.legs.map((leg, index) => {
+                            const departureDate: Date = new Date(leg.departure);
+                            const arrivalDate: Date = new Date(leg.arrival);
+                            return (
+                                <>
+                                    <tr key={index}>
+                                        <td colSpan={2}>{ index === 0 ? 'Aller' : 'Retour' }</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p>De : { leg.origin.name }</p>
+                                            <p>{ displayDateAndTime(departureDate) }</p>
+                                        </td>
+                                        <td>
+                                            <p>A : { leg.destination.name }</p>
+                                            <p>{ displayDateAndTime(arrivalDate) }</p>
+                                        </td>
+                                    </tr>
+                                </>
+                            )
+                        })
+                    }
+                </table>
+                <div>
+                    <p>Durée: { displayDuration(flight.totalDuration) }</p>
+                    <p>Prix: { flight.price.amount } €</p>
+                </div>
+                <div>
+                    <button className="skyscanner_flight_card_button">
+                        {
+                            isFavoritesPage ?
+                                <span className="material-icons-round" onClick={handleDeleteClick}>delete_forever</span>
+                                : <span className="material-icons-round" onClick={handleFavoriteCLick}>{ isFavoriteFlight ? 'favorite' : 'favorite_border'}</span>
+                        }
+                    </button>
+                </div>
             </div>
-            <div>
-                <p>Durée: { displayDuration(flight.totalDuration) }</p>
-                <p>Prix: { flight.price.amount } €</p>
-            </div>
-            {
-                isFavoritesPage ?
-                    <div>
-                        <button>
-                            <span className="material-icons-round" onClick={handleDeleteClick}>delete_forever</span>
-                        </button>
-                    </div>
-                    : <div>
-                        <button>
-                            <span className="material-icons-round" onClick={handleFavoriteCLick}>{ isFavoriteFlight ? 'favorite' : 'favorite_border'}</span>
-                        </button>
-                    </div>
-            }
         </article>
     );
 }

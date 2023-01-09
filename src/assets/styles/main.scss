@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/* Normalize CSS */
+@import "modern-normalize";
+
+/* Variables */
+@import "vars";
+//@use "fonts";
+
+/* Commons */
+@import "commons/base";
+@import "commons/header";
+@import "commons/card-list";
+
+/* Parts */
+@import "parts/flight-card";
+
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+p:last-child, address {
+  margin: 0;
+}
+
+.Layout {
+  min-height: 100vh;
+  display: grid;
+  grid-auto-rows: auto 1fr auto;
+}
+
+.dropdown-item {
+  padding: 4px 8px;
+  font-size: 0.95rem;
+
+  &:hover, &:focus, &.active {
+    background-color: transparent;
+  }
+}
+
+.navbar-nav .nav-link, .custom-link {
+  font-weight: bold;
+  //color: $primary;
+  text-decoration: none;
+
+  &:hover, &:focus, &.active {
+    //color: $secondary;
+    text-decoration: underline;
+  }
+}

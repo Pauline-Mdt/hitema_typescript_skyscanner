@@ -130,7 +130,7 @@ const Flights = () => {
                 </div>
                 <button type="submit">Rechercher</button>
             </form>
-            <div>
+            <div className="card-list">
                 {
                     error && <p>Désolé, il y a eu un problème :<br/>{ message }.<br/>Merci de réessayer plus tard.</p>
                 }

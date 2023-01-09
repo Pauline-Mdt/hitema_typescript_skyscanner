@@ -21,7 +21,7 @@ const FavoriteFlights = () => {
             <div>
                 <p>Les vols enregistrés dans vos favoris.</p>
             </div>
-            <div>
+            <div className="card-list">
                 {
                     favoriteFlights.length === 0 ?
                         <p>Il n'y a pas de vols enregistrés dans les favoris.</p>
