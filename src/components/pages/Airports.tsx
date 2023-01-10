@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {searchAirports} from '../../services/skyscannerApi';
 import AirportCard from '../parts/AirportCard';
-import {Airport} from '../../interfaces/interfaces';
+import {AirportInterface} from '../../interfaces/interfaces';
 
 const Airports: React.FC = () => {
     const [search, setSearch] = useState<string>('');
-    const [airports, setAirports] = useState<Airport[]>([]);
+    const [airports, setAirports] = useState<AirportInterface[]>([]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(event.target.value);
@@ -19,20 +19,20 @@ const Airports: React.FC = () => {
     }
 
     return (
-        <>
+        <main className="container">
             <h1>Aéroports</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="form">
                 <input type="text" placeholder="Aéroport recherché"
                        value={search} onChange={handleChange}/>
-                <button type="submit">Rechercher</button>
+                <button type="submit" className="button button_inverted">Rechercher</button>
             </form>
-            <div>
+            <div className="card-list">
                 {
                     airports.length !== 0 &&
                     airports.map((airport, index) => <AirportCard key={index} airport={airport}/>)
                 }
             </div>
-        </>
+        </main>
     );
 }
 

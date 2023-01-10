@@ -1,5 +1,5 @@
-export interface Airport {
-    AirportInformation: AirportInformation,
+export interface AirportInterface {
+    AirportInformation: AirportInformationInterface,
     CityId: string,
     CityName: string,
     CityNameEn: string,
@@ -17,13 +17,13 @@ export interface Airport {
     UntransliteratedResultingPhrase: string,
 }
 
-export interface AirportInformation {
+export interface AirportInformationInterface {
     CityId: string,
     CityName: string,
     CityNameEn: string,
     CountryId: string,
     CountryName: string,
-    Distance: {Value: 137.55746359279308, UnitCode: 'mile'},
+    Distance: DistanceInterface,
     GeoContainerId: string,
     GeoId: string,
     Highlighting: any,
@@ -37,7 +37,12 @@ export interface AirportInformation {
     ResultingPhrase: any,
 }
 
-export interface FlightSearch {
+export interface DistanceInterface {
+    Value: number,
+    UnitCode: string,
+}
+
+export interface FlightSearchInterface {
     origin: string,
     destination: string,
     date: string,
@@ -52,17 +57,17 @@ export interface FlightSearch {
     market?: string,
 }
 
-export interface Flight {
+export interface FlightInterface {
     id: string,
-    price: Price,
-    legs: Leg[],
+    price: PriceInterface,
+    legs: LegInterface[],
     is_eco_contender: boolean,
     eco_contender_delta: number,
     score: number,
     totalDuration: number,
 }
 
-export interface Price {
+export interface PriceInterface {
     amount: number,
     update_status: string,
     last_updated: string,
@@ -71,19 +76,19 @@ export interface Price {
     transfer_type: string,
 }
 
-export interface Leg {
+export interface LegInterface {
     id: string,
-    origin: Place,
-    destination: Place,
+    origin: PlaceInterface,
+    destination: PlaceInterface,
     departure: string
     arrival: string
     duration: number
-    carriers: Carrier[],
+    carriers: CarrierInterface[],
     stop_count: number,
     stops: [],
 }
 
-export interface Place {
+export interface PlaceInterface {
     id: number,
     entity_id: number,
     alt_id: string,
@@ -94,10 +99,71 @@ export interface Place {
     display_code: string,
 }
 
-export interface Carrier {
+export interface CarrierInterface {
     id: number,
     name: string,
     alt_id: string,
     display_code: string,
     display_code_type: string,
+}
+
+export interface FlightDetailsSearchInterface {
+    itineraryId: string,
+    legs: LegForDetailsSearchInterface[],
+    adults?: number,
+    children?: number,
+    infants?: number,
+    currency?: string,
+    countryCode?: string,
+    market?: string,
+}
+
+export interface LegForDetailsSearchInterface {
+    origin: string,
+    destination: string,
+    date: string,
+}
+
+export interface FlightDetailsInterface {
+    legs: LegForFlightDetailsInterface[],
+    linked: any[],
+    pricingOptions: any[],
+}
+
+export interface LegForFlightDetailsInterface {
+    id: string,
+    origin: ShortPlaceInterface,
+    destination: ShortPlaceInterface,
+    segments: SegmentInterface[],
+    layovers: LayoverInterface,
+    duration: number,
+    stopCount: number,
+    departure: string,
+    arrival: string,
+    dayChange: number,
+}
+
+export interface ShortPlaceInterface {
+    id: string,
+    name: string,
+    displayCode: string,
+    city: string,
+}
+
+export interface SegmentInterface {
+    id: string,
+    origin: ShortPlaceInterface,
+    destination: ShortPlaceInterface,
+    duration: number,
+    dayChange: number,
+    flightNumber: string,
+    departure: string,
+    arrival: string,
+}
+
+export interface LayoverInterface {
+    segmentId: string,
+    origin: ShortPlaceInterface,
+    destination: ShortPlaceInterface,
+    duration: number,
 }

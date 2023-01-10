@@ -1,18 +1,3 @@
-//*,
-//*::before,
-//*::after{box-sizing:border-box;}
-a{text-decoration:none; color:inherit; cursor:pointer;}
-//button{background-color:transparent; color:inherit; border-width:0; padding:0; cursor:pointer;}
-//figure{margin:0;}
-//input::-moz-focus-inner {border:0; padding:0; margin:0;}
-//ul, ol, dd{margin:0; padding:0; list-style:none;}
-//h1, h2, h3, h4, h5, h6{margin:0; font-size:inherit; font-weight:inherit;}
-//p{margin:0;}
-//cite {font-style:normal;}
-//fieldset{border-width:0; padding:0; margin:0;}
-
-
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,17 +12,10 @@ html[lang] {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  font-size: 1.6rem;
-  //font-family: $base-font-family;
-}
-
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  //font-family: $prompt-font-family;
-}
 
 body {
   margin: 0;
+  font-size: 1.8rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
@@ -50,19 +28,21 @@ code {
   monospace;
 }
 
-.container {
-  width: 100%;
-  max-width: $container-max-width;
-  margin: 0 auto;
-  padding: 0 15px;
+main {
+  position: relative;
+}
 
-  .container {
-    max-width: none;
-    padding: 0;
-  }
+h1 {
+  color: $black-coral;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+a {
+  text-decoration:none;
+  color:inherit;
+  cursor:pointer;
 }

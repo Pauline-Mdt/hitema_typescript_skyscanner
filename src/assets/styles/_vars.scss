@@ -10,6 +10,12 @@ $black-coral: #465C69;
 $space-cadet: #363457;
 $royal-purple: #735290;
 
+$magic-mint: #AAFAC8;
+$aero-blue: #C7FFED;
+$silver-sand: #BBC8CA;
+$lilac-luster: #B592A0;
+$copper-rose: #9C7178;
+
 // CUSTOM colors
 //$primary-light: rgb(165, 185, 156);
 //$secondary-light: rgb(209, 193, 168);
@@ -32,5 +38,5 @@ $royal-purple: #735290;
 
 /* Various */
 $header-height: 50px;
-$container-max-width: calc(1240px + (2 * 15px));
+$container-max-width: calc(1200px + (2 * 20px));
 $box-shadow: 0px 3px 20px rgba(var(--navy-blue-raw), var(--opacity-18));

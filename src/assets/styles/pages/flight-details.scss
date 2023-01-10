@@ -1,0 +1,43 @@
+.flight_details {
+  //display: flex;
+  //justify-content: space-between;
+  //align-items: center;
+  //flex-wrap: wrap;
+  //gap: 20px;
+  //width: 100%;
+
+  &_content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+
+    &_column {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      &:first-child {
+        width: 50%;
+      }
+
+      &_trip {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      &_itinerary {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5px;
+
+        span {
+          font-size: 1.8rem;
+          vertical-align: text-bottom;
+        }
+      }
+    }
+  }
+}

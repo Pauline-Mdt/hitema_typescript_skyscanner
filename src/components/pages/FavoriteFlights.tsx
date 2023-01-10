@@ -1,12 +1,12 @@
 import FlightCard from '../parts/FlightCard';
 import React, {useEffect, useState} from 'react';
-import {Flight} from '../../interfaces/interfaces';
+import {FlightInterface} from '../../interfaces/interfaces';
 import {getLocalStorageItem} from '../../helpers/localStorage';
 
 const FAVORITES_FLIGHTS_STORAGE_KEY: string = 'skyscanner_favourites_flights';
 
-const FavoriteFlights = () => {
-    const [favoriteFlights, setFavoriteFlights] = useState<Flight[]>([]);
+const FavoriteFlights: React.FC = () => {
+    const [favoriteFlights, setFavoriteFlights] = useState<FlightInterface[]>([]);
 
     useEffect(() => {
         const favoriteFlightsStored = getLocalStorageItem(FAVORITES_FLIGHTS_STORAGE_KEY)
@@ -16,22 +16,19 @@ const FavoriteFlights = () => {
     }, []);
 
     return (
-        <>
+        <main className="container">
             <h1>Favoris</h1>
-            <div>
-                <p>Les vols enregistrés dans vos favoris.</p>
-            </div>
-            <div className="card-list">
+            <div className="card-list card-list_flights">
                 {
                     favoriteFlights.length === 0 ?
-                        <p>Il n'y a pas de vols enregistrés dans les favoris.</p>
+                        <p>Il n'y a pas de vols enregistrés dans les favoris pour le moment.</p>
                         : favoriteFlights.map((flight) => <FlightCard key={flight.id}
                                                                       flight={flight}
                                                                       favoriteFlights={favoriteFlights}
                                                                       setFavoriteFlights={setFavoriteFlights}/>)
                 }
             </div>
-        </>
+        </main>
     );
 }
 

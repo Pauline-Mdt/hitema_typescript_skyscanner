@@ -1,19 +1,19 @@
 import React from 'react';
-import {Airport} from '../../interfaces/interfaces';
+import {AirportInterface} from '../../interfaces/interfaces';
 
 interface AirportCardProps {
-    airport: Airport,
+    airport: AirportInterface,
 }
 
 const AirportCard: React.FC<AirportCardProps> = ({airport}) => {
     return (
-        <article>
-            <header>
+        <article className="card card_airport">
+            <header className="card_header">
                 <h3>{airport.PlaceName}</h3>
             </header>
-            <div>
-                <p>Code : {airport.PlaceId || airport.AirportInformation.PlaceId}</p>
-                <p>{airport.CityName} - {airport.CountryName}</p>
+            <div className="card_content">
+                <p>Code aéroport : {airport.PlaceId || airport.AirportInformation.PlaceId}</p>
+                <p>Localisation : {airport.CityName} - {airport.CountryName}</p>
             </div>
         </article>
     );

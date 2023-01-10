@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Flight, FlightSearch} from '../../interfaces/interfaces';
+import {FlightInterface, FlightSearchInterface} from '../../interfaces/interfaces';
 import {searchFlights} from '../../services/skyscannerApi';
 import FlightCard from '../parts/FlightCard';
 import {getLocalStorageItem} from '../../helpers/localStorage';
 
 const FAVORITES_FLIGHTS_STORAGE_KEY: string = 'skyscanner_favourites_flights';
 
-const Flights = () => {
-    const [search, setSearch] = useState<FlightSearch>({
+const Flights: React.FC = () => {
+    const [flightSearch, setFlightSearch] = useState<FlightSearchInterface>({
         origin: '',
         destination: '',
         date: '',
@@ -21,11 +21,11 @@ const Flights = () => {
         countryCode: 'FR',
         market: 'fr-FR',
     });
-    const [hasReturn, setHasReturn] = useState<boolean>(false);
-    const [flights, setFlights] = useState<Flight[]>([]);
+    const [flightHasReturn, setFlightHasReturn] = useState<boolean>(false);
+    const [flights, setFlights] = useState<FlightInterface[]>([]);
     const [error, setError] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
-    const [favoriteFlights, setFavoriteFlights] = useState<Flight[]>([]);
+    const [favoriteFlights, setFavoriteFlights] = useState<FlightInterface[]>([]);
 
     useEffect(() => {
         const favoriteFlightsStored = getLocalStorageItem(FAVORITES_FLIGHTS_STORAGE_KEY)
@@ -35,22 +35,20 @@ const Flights = () => {
     }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.name === 'hasReturn') {
+        if (event.target.name === 'flightHasReturn') {
             const isChecked: boolean = event.target.checked;
-            setHasReturn(isChecked)
+            setFlightHasReturn(isChecked)
             if (!isChecked) {
-                setSearch({...search, returnDate: ''})
+                setFlightSearch({...flightSearch, returnDate: ''})
             }
         } else {
-            setSearch({...search, [event.target.name]: event.target.value})
+            setFlightSearch({...flightSearch, [event.target.name]: event.target.value})
         }
     }
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(search)
-        const result = await searchFlights(search)
-        console.log(result)
+        const result = await searchFlights(flightSearch)
         if (result.status) {
             setError(false);
             setFlights(result.data)
@@ -62,77 +60,79 @@ const Flights = () => {
     }
 
     return (
-        <>
+        <main className="container">
             <h1>Vols</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="origin">Aéroport de départ</label>
-                    <input type="text"
-                           id="origin" name="origin"
-                           value={search.origin} onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="origin">Aéroport d'arrivée</label>
-                    <input type="text"
-                           id="destination" name="destination"
-                           value={search.destination} onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="origin">Date de départ</label>
-                    <input type="date"
-                           id="date" name="date"
-                           onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="origin">Aller-retour</label>
-                    <input type="checkbox"
-                           id="hasReturn" name="hasReturn"
-                           checked={hasReturn} onChange={handleChange}
-                    />
-                </div>
-                {
-                    hasReturn &&
+            <form onSubmit={handleSubmit} className="form">
+                <div className="form_inputs">
                     <div>
-                        <label htmlFor="origin">Date de retour</label>
+                        <label htmlFor="origin">Aéroport de départ</label>
+                        <input type="text"
+                               id="origin" name="origin"
+                               value={flightSearch.origin} onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="destination">Aéroport d'arrivée</label>
+                        <input type="text"
+                               id="destination" name="destination"
+                               value={flightSearch.destination} onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="date">Date de départ</label>
                         <input type="date"
-                               id="returnDate" name="returnDate"
+                               id="date" name="date"
                                onChange={handleChange}
                         />
                     </div>
+                    <div>
+                        <label htmlFor="flightHasReturn">Aller-retour</label>
+                        <input type="checkbox"
+                               id="flightHasReturn" name="flightHasReturn"
+                               checked={flightHasReturn} onChange={handleChange}
+                        />
+                    </div>
+                    {
+                        flightHasReturn &&
+                        <div>
+                            <label htmlFor="returnDate">Date de retour</label>
+                            <input type="date"
+                                   id="returnDate" name="returnDate"
+                                   onChange={handleChange}
+                            />
+                        </div>
 
-                }
-                <div>
-                    <label htmlFor="origin">Nombre d'adultes</label>
-                    <small>18 ans et plus</small>
-                    <input type="number"
-                           id="adults" name="adults"
-                           value={search.adults} onChange={handleChange}
-                    />
+                    }
+                    <div>
+                        <label htmlFor="adults">Nombre d'adultes</label>
+                        <small>18 ans et plus</small>
+                        <input type="number"
+                               id="adults" name="adults"
+                               value={flightSearch.adults} onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="children">Nombre d'enfants</label>
+                        <small>De 2 à 17 ans</small>
+                        <input type="number"
+                               id="children" name="children"
+                               value={flightSearch.children} onChange={handleChange}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="infants">Nombre de bébés</label>
+                        <small>Moins de 2 ans</small>
+                        <input type="number"
+                               id="infants" name="infants"
+                               value={flightSearch.infants} onChange={handleChange}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="origin">Nombre d'enfants</label>
-                    <small>De 2 à 17 ans</small>
-                    <input type="number"
-                           id="children" name="children"
-                           value={search.children} onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="origin">Nombre de bébés</label>
-                    <small>Moins de 2 ans</small>
-                    <input type="number"
-                           id="infants" name="infants"
-                           value={search.infants} onChange={handleChange}
-                    />
-                </div>
-                <button type="submit">Rechercher</button>
+                <button type="submit" className="button button_inverted">Rechercher</button>
             </form>
-            <div className="card-list">
+            <div className="card-list card-list_flights">
                 {
-                    error && <p>Désolé, il y a eu un problème :<br/>{ message }.<br/>Merci de réessayer plus tard.</p>
+                    error && <p>Désolé, il y a eu un problème :<br/>{message}.<br/>Merci de réessayer plus tard.</p>
                 }
                 {
                     flights.length !== 0 &&
@@ -142,7 +142,7 @@ const Flights = () => {
                                                         setFavoriteFlights={setFavoriteFlights}/>)
                 }
             </div>
-        </>
+        </main>
     );
 }
 

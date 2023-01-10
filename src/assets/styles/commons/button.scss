@@ -1,0 +1,27 @@
+.button {
+  $button: &;
+  padding: 10px;
+  border: 2px solid $aero-blue;
+  border-radius: 5px;
+  background: $black-coral;
+  color: $aero-blue;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    border: 2px solid $black-coral;
+    background: $aero-blue;
+    color: $black-coral;
+  }
+
+  &_inverted {
+    border: 2px solid $black-coral;
+    background: $aero-blue;
+    color: $black-coral;
+
+    &:hover, &:focus {
+      border: 2px solid $aero-blue;
+      background: $black-coral;
+      color: $aero-blue;
+    }
+  }
+}

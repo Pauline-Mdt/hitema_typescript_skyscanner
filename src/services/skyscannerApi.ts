@@ -1,5 +1,5 @@
 import axios, {AxiosInstance} from 'axios';
-import {FlightSearch} from '../interfaces/interfaces';
+import {FlightDetailsSearchInterface, FlightSearchInterface} from '../interfaces/interfaces';
 
 /* Axios instance for API call */
 const HTTP: AxiosInstance = axios.create({
@@ -22,14 +22,14 @@ export async function searchAirports(query: string) {
                 query: query,
             },
         });
-        console.log(AXIOS_RESPONSE_TITLE, response);
+        console.log(AXIOS_RESPONSE_TITLE, response.data);
         return response.data;
     } catch (error) {
         handleError(error)
     }
 }
 
-export async function searchFlights(flightSearch: FlightSearch) {
+export async function searchFlights(flightSearch: FlightSearchInterface) {
     try {
         const response = await HTTP.get('/searchFlights', {
             params: {
@@ -45,6 +45,27 @@ export async function searchFlights(flightSearch: FlightSearch) {
                 currency: flightSearch.currency,
                 countryCode: flightSearch.countryCode,
                 market: flightSearch.market,
+            },
+        });
+        console.log(AXIOS_RESPONSE_TITLE, response);
+        return response.data;
+    } catch (error: any) {
+        handleError(error)
+    }
+}
+
+export async function getFlightDetails(flight: FlightDetailsSearchInterface) {
+    try {
+        const response = await HTTP.get('/getFlightDetails', {
+            params: {
+                itineraryId: flight.itineraryId,
+                legs: JSON.stringify(flight.legs),
+                adults: flight.adults,
+                children: flight.children,
+                infants: flight.infants,
+                currency: flight.currency,
+                countryCode: flight.countryCode,
+                market: flight.market,
             },
         });
         console.log(AXIOS_RESPONSE_TITLE, response);

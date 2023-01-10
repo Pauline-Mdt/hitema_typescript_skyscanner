@@ -1,6 +1,10 @@
-const Home = () => {
+import React from 'react';
+
+const Home: React.FC = () => {
     return (
-        <h1>Dreaming voyage</h1>
+        <main className="container">
+            <h1>Dreaming Voyage</h1>
+        </main>
     );
 }
 
