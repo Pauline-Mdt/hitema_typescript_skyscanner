@@ -82,6 +82,9 @@ const handleError = (error: any) => {
         return error.response;
     } else {
         console.error(UNEXPECTED_ERROR_TITLE, error);
-        return 'An unexpected error occurred';
+        return {
+            status: false,
+            message: 'An unexpected error occurred'
+        };
     }
 }

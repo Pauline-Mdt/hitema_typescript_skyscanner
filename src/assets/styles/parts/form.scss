@@ -20,6 +20,10 @@
     text-align: center;
   }
 
+  input[type=number] {
+    width: 100px;
+  }
+
   &_inputs {
     display: flex;
     flex-direction: column;

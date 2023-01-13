@@ -3,6 +3,7 @@ import {FlightInterface, FlightSearchInterface} from '../../interfaces/interface
 import {searchFlights} from '../../services/skyscannerApi';
 import FlightCard from '../parts/FlightCard';
 import {getLocalStorageItem} from '../../helpers/localStorage';
+import Loader from '../commons/Loader';
 
 const FAVORITES_FLIGHTS_STORAGE_KEY: string = 'skyscanner_favourites_flights';
 
@@ -23,8 +24,9 @@ const Flights: React.FC = () => {
     });
     const [flightHasReturn, setFlightHasReturn] = useState<boolean>(false);
     const [flights, setFlights] = useState<FlightInterface[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
-    const [message, setMessage] = useState<string>('');
+    const [errorMessage, setErrorMessage] = useState<string>('');
     const [favoriteFlights, setFavoriteFlights] = useState<FlightInterface[]>([]);
 
     useEffect(() => {
@@ -48,15 +50,18 @@ const Flights: React.FC = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setFlights([]);
+        setIsLoading(true);
         const result = await searchFlights(flightSearch)
         if (result.status) {
             setError(false);
             setFlights(result.data)
         } else {
             setError(true);
-            setMessage(result.message);
+            setErrorMessage(result.message);
             setFlights([]);
         }
+        setIsLoading(false);
     }
 
     return (
@@ -67,21 +72,21 @@ const Flights: React.FC = () => {
                     <div>
                         <label htmlFor="origin">Aéroport de départ</label>
                         <input type="text"
-                               id="origin" name="origin"
+                               id="origin" name="origin" required
                                value={flightSearch.origin} onChange={handleChange}
                         />
                     </div>
                     <div>
                         <label htmlFor="destination">Aéroport d'arrivée</label>
                         <input type="text"
-                               id="destination" name="destination"
+                               id="destination" name="destination" required
                                value={flightSearch.destination} onChange={handleChange}
                         />
                     </div>
                     <div>
                         <label htmlFor="date">Date de départ</label>
                         <input type="date"
-                               id="date" name="date"
+                               id="date" name="date" required
                                onChange={handleChange}
                         />
                     </div>
@@ -132,7 +137,10 @@ const Flights: React.FC = () => {
             </form>
             <div className="card-list card-list_flights">
                 {
-                    error && <p>Désolé, il y a eu un problème :<br/>{message}.<br/>Merci de réessayer plus tard.</p>
+                    isLoading && <Loader/>
+                }
+                {
+                    error && <p>Désolé, il y a eu un problème :<br/>{errorMessage}<br/>Merci de réessayer plus tard.</p>
                 }
                 {
                     flights.length !== 0 &&
